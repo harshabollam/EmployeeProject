@@ -15,7 +15,8 @@ namespace EmployeeProject.Controllers
     {
         new EmpDto { EmpId = 1, EmpName = "Ram", EmpDomain = ".NET" },
         new EmpDto { EmpId = 2, EmpName = "Ravi", EmpDomain = "Testing" },
-        new EmpDto { EmpId = 3, EmpName = "Sita", EmpDomain = "Angular" }
+        new EmpDto { EmpId = 3, EmpName = "Sita", EmpDomain = "Angular" },
+        new EmpDto { EmpId = 4, EmpName = "Gopal", EmpDomain = "SAP" }
     };
 
             return Ok(employees);

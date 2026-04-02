@@ -31,5 +31,11 @@ namespace EmployeeProject.Controllers
 
             return Ok("Data inserted into Azure SQL DB successfully ✅");
         }
+
+        [HttpGet("health")]
+        public IActionResult Health()
+        {
+            return Ok("API is running 🚀");
+        }
     }
 }

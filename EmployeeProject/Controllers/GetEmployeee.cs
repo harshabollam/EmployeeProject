@@ -8,18 +8,28 @@ namespace EmployeeProject.Controllers
     [ApiController]
     public class GetEmployeee : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly AppDbContext _context;
+
+        public GetEmployeee(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public IActionResult SaveEmployees()
         {
             var employees = new List<EmpDto>
-    {
-        new EmpDto { EmpId = 1, EmpName = "Ram", EmpDomain = ".NET" },
-        new EmpDto { EmpId = 2, EmpName = "Ravi", EmpDomain = "Testing" },
-        new EmpDto { EmpId = 3, EmpName = "Sita", EmpDomain = "Angular" },
-        new EmpDto { EmpId = 4, EmpName = "Gopal", EmpDomain = "SAP" }
-    };
+        {
+            new EmpDto { EmpId = 1, EmpName = "Ram", EmpDomain = ".NET" },
+            new EmpDto { EmpId = 2, EmpName = "Ravi", EmpDomain = "Testing" },
+            new EmpDto { EmpId = 3, EmpName = "Sita", EmpDomain = "Angular" },
+            new EmpDto { EmpId = 4, EmpName = "Gopal", EmpDomain = "SAP" }
+        };
 
-            return Ok(employees);
+            _context.Employees.AddRange(employees);
+            _context.SaveChanges();
+
+            return Ok("Data inserted into Azure SQL DB successfully ✅");
         }
     }
 }

@@ -3,8 +3,8 @@ using Models;
 
 namespace EmployeeProject.Controllers
 {
-    [Route("api/employee")]
     [ApiController]
+    [Route("api/[controller]")]   // ✅ dynamic route
     public class EmployeeController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -15,7 +15,7 @@ namespace EmployeeProject.Controllers
         }
 
         // ✅ POST: Insert employees
-        [HttpPost]
+        [HttpPost("seed")]   // 🔥 explicit route
         public IActionResult SaveEmployees()
         {
             var employees = new List<EmpDto>
@@ -33,7 +33,7 @@ namespace EmployeeProject.Controllers
         }
 
         // ✅ GET: Retrieve all employees
-        [HttpGet]
+        [HttpGet]   // GET: /api/employee
         public IActionResult GetEmployees()
         {
             var employees = _context.Employees.ToList();
@@ -41,7 +41,7 @@ namespace EmployeeProject.Controllers
         }
 
         // ✅ GET: Health check
-        [HttpGet("health")]
+        [HttpGet("health")]   // GET: /api/employee/health
         public IActionResult Health()
         {
             return Ok("API is running 🚀");

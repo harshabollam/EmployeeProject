@@ -44,7 +44,7 @@ namespace EmployeeProject.Controllers
         [HttpGet("health")]   // GET: /api/employee/health
         public IActionResult Health()
         {
-            return Ok("API is running 🚀");
+            return Ok("API is running  deployed through the ci/cd 🚀");
         }
     }
 }

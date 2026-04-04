@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeProject.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]   // ✅ dynamic route
+    [Route("api/[controller]")]
+    [Authorize] // ✅ dynamic route
     public class EmployeeController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -41,6 +43,7 @@ namespace EmployeeProject.Controllers
         }
 
         // ✅ GET: Health check
+        [AllowAnonymous]
         [HttpGet("health")]   // GET: /api/employee/health
         public IActionResult Health()
         {
